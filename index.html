@@ -1,0 +1,5964 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NPI Search tool</title>
+<!--//Using Microsoft CDN to access jQuery-->
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<!--//script for jQuery to take search term from search bar to search table-->
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+	<h1>NPI lookup tool</h1>
+	<!--Search bar code-->
+	<div class="topnav">
+	  <input id="myInput" type="text" placeholder="Search..">
+	</div>
+	<br><br>
+
+<!--html version of Cerner map table-->
+
+<table class="table table-bordered table-hover table-condensed">
+<thead><tr><th title="Field #1">TAXONOMY_CD</th>
+<th title="Field #2">TAXONOMY_TYPE</th>
+<th title="Field #3">TAXONOMY_CLASSIFICATION</th>
+<th title="Field #4">TAXONOMY_SPECIALIZATION</th>
+<th title="Field #5">SPECIALTY_DISPLAY</th>
+</tr></thead>
+<tbody id="myTable"><tr>
+<td>207YX0602X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Otolaryngology</td>
+<td>Otolaryngic Allergy</td>
+<td>Otolaryngology (ENT)</td>
+</tr>
+<tr>
+<td>163WU0100X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Urology</td>
+<td>Urology</td>
+</tr>
+<tr>
+<td>167G00000X</td>
+<td>Nursing Service Providers</td>
+<td>Licensed Psychiatric Technician</td>
+<td>UNKNOWN</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>170300000X</td>
+<td>Other Service Providers</td>
+<td>Genetic Counselor, MS</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207ZH0000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Hematology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>2084P0802X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Addiction Psychiatry</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>2084P0804X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Child &amp; Adolescent Psychiatry</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>207RC0001X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Clinical Cardiac Electrophysiology</td>
+<td>Cardiology</td>
+</tr>
+<tr>
+<td>207RH0000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Hematology</td>
+<td>Hematology &amp; Oncology</td>
+</tr>
+<tr>
+<td>261QF0400X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Federally Qualified Health Center (FQHC)</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>1835G0000X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacist</td>
+<td>General Practice</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>225C00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Rehabilitation Counselor</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207KA0200X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Allergy &amp; Immunology</td>
+<td>Allergy</td>
+<td>Allergy &amp; Immunology</td>
+</tr>
+<tr>
+<td>2086S0105X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Surgery</td>
+<td>Surgery of the Hand</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>208800000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Urology</td>
+<td>UNKNOWN</td>
+<td>Urology</td>
+</tr>
+<tr>
+<td>136A00000X</td>
+<td>Dietary &amp; Nutritional Service Providers</td>
+<td>Dietetic Technician, Registered</td>
+<td>UNKNOWN</td>
+<td>Dietary &amp; Nutritional</td>
+</tr>
+<tr>
+<td>146M00000X</td>
+<td>Emergency Medical Service Providers</td>
+<td>Emergency Medical Technician, Intermediate</td>
+<td>UNKNOWN</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>146N00000X</td>
+<td>Emergency Medical Service Providers</td>
+<td>Emergency Medical Technician, Basic</td>
+<td>UNKNOWN</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>152W00000X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Optometrist</td>
+<td>UNKNOWN</td>
+<td>Optometry</td>
+</tr>
+<tr>
+<td>152WS0006X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Optometrist</td>
+<td>Sports Vision</td>
+<td>Optometry</td>
+</tr>
+<tr>
+<td>2279G0305X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Geriatric Care</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>2279G1100X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>General Care</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>163WC1400X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>College Health</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WE0003X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Emergency</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>163WL0100X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Lactation Consultant</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WP1700X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Perinatal</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>207QA0401X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Family Medicine</td>
+<td>Addiction Medicine</td>
+<td>Family Medicine</td>
+</tr>
+<tr>
+<td>213EP0504X</td>
+<td>Podiatric Medicine &amp; Surgery Service Providers</td>
+<td>Podiatrist</td>
+<td>Public Medicine</td>
+<td>Podiatry</td>
+</tr>
+<tr>
+<td>213ER0200X</td>
+<td>Podiatric Medicine &amp; Surgery Service Providers</td>
+<td>Podiatrist</td>
+<td>Radiology</td>
+<td>Podiatry</td>
+</tr>
+<tr>
+<td>213ES0000X</td>
+<td>Podiatric Medicine &amp; Surgery Service Providers</td>
+<td>Podiatrist</td>
+<td>Sports Medicine</td>
+<td>Sports Medicine</td>
+</tr>
+<tr>
+<td>2084P0800X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Psychiatry</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>246YC3302X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Health Info</td>
+<td>Coding Specialist, Physician Office Based</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QC1800X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Corporate Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207RA0000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Adolescent Medicine</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>102L00000X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychoanalyst</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>173F00000X</td>
+<td>Other Service Providers</td>
+<td>Sleep Specialist, PhD</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>174200000X</td>
+<td>Other Service Providers</td>
+<td>Meals</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>1744P3200X</td>
+<td>Other Service Providers</td>
+<td>Specialist</td>
+<td>Prosthetics Case Management</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2080P0006X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Developmental – Behavioral Pediatrics</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>2080P0201X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Allergy/Immunology</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>103G00000X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Clinical Neuropsychologist</td>
+<td>UNKNOWN</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>163WH0200X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Home Health</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>103TF0000X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Family</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>2080P0208X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Infectious Diseases</td>
+<td>Pediatric Infectious Diseases</td>
+</tr>
+<tr>
+<td>103TM1800X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Mental Retardation &amp; Developmental Disabilities</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>207PE0004X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Emergency Medicine</td>
+<td>Emergency Medical Services</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>111NT0100X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Thermography</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>207PE0005X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Emergency Medicine</td>
+<td>Undersea and Hyperbaric Medicine</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>207Q00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Family Medicine</td>
+<td>UNKNOWN</td>
+<td>Family Medicine</td>
+</tr>
+<tr>
+<td>1223G0001X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>General Practice</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>207SG0205X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Medical Genetics</td>
+<td>Ph.D. Medical Genetics</td>
+<td>Genetics</td>
+</tr>
+<tr>
+<td>2251E1200X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>Ergonomics</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>2278H0200X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Home Health</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>237700000X</td>
+<td>Speech, Language and Hearing Service Providers</td>
+<td>Hearing Instrument Specialist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QP0904X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Public Health, Federal</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471C1106X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Cardiac-Interventional Technology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251C00000X</td>
+<td>Agencies</td>
+<td>Day Training, Developmentally Disabled Services</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>253J00000X</td>
+<td>Agencies</td>
+<td>Foster Care Agency</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QA3000X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Augmentative Communication</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>335V00000X</td>
+<td>Suppliers</td>
+<td>Portable X-Ray Supplier</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LS0200X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>School</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SS0200X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>School</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SW0102X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Women&#39;s Health</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>364SX0204X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Oncology, Pediatrics</td>
+<td>Pediatric Hematology-Oncology</td>
+</tr>
+<tr>
+<td>287300000X</td>
+<td>Hospitals</td>
+<td>Christian Science Sanitorium</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>311ZA0620X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Custodial Care Facility</td>
+<td>Adult Care Home</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>320800000X</td>
+<td>Residential Treatment Facilities</td>
+<td>Community Based Residential Treatment Facility, Mental Illness</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332800000X</td>
+<td>Suppliers</td>
+<td>Indian Health Service/Tribal/Urban Indian Health (I/T/U) Pharmacy</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332900000X</td>
+<td>Suppliers</td>
+<td>Non-Pharmacy Dispensing Site</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3747A0650X</td>
+<td>Nursing Service Related Providers</td>
+<td>Technician</td>
+<td>Attendant Care Provider</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SH0200X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Home Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>225XE1200X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Ergonomics</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>246QL0901X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Laboratory Management, Diplomate</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246RM2200X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Pathology</td>
+<td>Medical Laboratory</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246RP1900X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Pathology</td>
+<td>Phlebotomy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LC1500X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Community Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LN0005X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Neonatal, Critical Care</td>
+<td>Critical Care</td>
+</tr>
+<tr>
+<td>376G00000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Nursing Home Administrator</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207YP0228X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Otolaryngology</td>
+<td>Pediatric Otolaryngology</td>
+<td>Otolaryngology (ENT)</td>
+</tr>
+<tr>
+<td>2251H1300X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>Human Factors</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>2251P0200X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>Pediatrics</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>225400000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Rehabilitation Practitioner</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>163WX0200X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Oncology</td>
+<td>Hematology &amp; Oncology</td>
+</tr>
+<tr>
+<td>2084S0012X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Sleep Medicine</td>
+<td>Neurology</td>
+</tr>
+<tr>
+<td>1710I1002X</td>
+<td>Other Service Providers</td>
+<td>Military Health Care Provider</td>
+<td>Independent Duty Corpsman</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>171100000X</td>
+<td>Other Service Providers</td>
+<td>Acupuncturist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>171M00000X</td>
+<td>Other Service Providers</td>
+<td>Case Manager/Care Coordinator</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207RC0000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Cardiovascular Disease</td>
+<td>Cardiology</td>
+</tr>
+<tr>
+<td>207RC0200X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Critical Care Medicine</td>
+<td>Critical Care</td>
+</tr>
+<tr>
+<td>261QG0250X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Genetics</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QI0500X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Infusion Therapy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM0850X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Adult Mental Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>111NN1001X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Nutrition</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>176B00000X</td>
+<td>Other Service Providers</td>
+<td>Midwife</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207RH0003X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Hematology &amp; Oncology</td>
+<td>Hematology &amp; Oncology</td>
+</tr>
+<tr>
+<td>207RN0300X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Nephrology</td>
+<td>Nephrology</td>
+</tr>
+<tr>
+<td>1835X0200X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacist</td>
+<td>Oncology</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>183700000X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacy Technician</td>
+<td>UNKNOWN</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>193400000X</td>
+<td>Group</td>
+<td>Single Specialty</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>204E00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Oral &amp; Maxillofacial Surgery</td>
+<td>UNKNOWN</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>2086S0129X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Surgery</td>
+<td>Vascular Surgery</td>
+<td>Vascular Surgery</td>
+</tr>
+<tr>
+<td>2086X0206X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Surgery</td>
+<td>Surgical Oncology</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>207VG0400X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>Gynecology</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>207VH0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>Hospice and Palliative Medicine</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>2278P1006X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Pulmonary Function Technologist</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>227900000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>UNKNOWN</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>2279C0205X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Critical Care</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>152WX0102X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Optometrist</td>
+<td>Occupational Vision</td>
+<td>Optometry</td>
+</tr>
+<tr>
+<td>156F00000X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Technician/Technologist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>156FX1900X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Technician/Technologist</td>
+<td>Orthoptist</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2279P3800X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Palliative/Hospice</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>163WD0400X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Diabetes Educator</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WF0300X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Flight</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WG0000X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>General Practice</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WP0200X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Pediatrics</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>208G00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Thoracic Surgery (Cardiothoracic Vascular Surgery)</td>
+<td>UNKNOWN</td>
+<td>Cardiothoracic Surgery</td>
+</tr>
+<tr>
+<td>209800000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Legal Medicine</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207QA0505X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Family Medicine</td>
+<td>Adult Medicine</td>
+<td>Family Medicine</td>
+</tr>
+<tr>
+<td>222Z00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Orthotist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZA2600X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Art, Medical</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZE0600X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Electroneurodiagnostic</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207ZP0007X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Molecular Genetic Pathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>174N00000X</td>
+<td>Other Service Providers</td>
+<td>Lactation Consultant, Non-RN</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2080P0008X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Neurodevelopmental Disabilities</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>103K00000X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Behavioral Analyst</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2080P0206X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Gastroenterology</td>
+<td>Pediatric Gastroenterology</td>
+</tr>
+<tr>
+<td>103TW0100X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Women</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>111N00000X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>UNKNOWN</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>207NS0135X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Dermatology</td>
+<td>Procedural Dermatology</td>
+<td>Dermatology</td>
+</tr>
+<tr>
+<td>2083P0011X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Preventive Medicine</td>
+<td>Undersea and Hyperbaric Medicine</td>
+<td>Preventive Medicine</td>
+</tr>
+<tr>
+<td>2084N0600X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Clinical Neurophysiology</td>
+<td>Neurology</td>
+</tr>
+<tr>
+<td>122300000X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>UNKNOWN</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>207SG0201X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Medical Genetics</td>
+<td>Clinical Genetics (M.D.)</td>
+<td>Genetics</td>
+</tr>
+<tr>
+<td>207SG0203X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Medical Genetics</td>
+<td>Clinical Molecular Genetics</td>
+<td>Genetics</td>
+</tr>
+<tr>
+<td>242T00000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Perfusionist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246QC1000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Chemistry</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246QH0000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Hematology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>273100000X</td>
+<td>Hospital Units</td>
+<td>Epilepsy Unit</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>273R00000X</td>
+<td>Hospital Units</td>
+<td>Psychiatric Unit</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM1300X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Multi-Specialty</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM2500X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Medical Specialty</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM2800X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Methadone Clinic</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QR1100X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Research</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>247000000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Health Information</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471B0102X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Bone Densitometry</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471M2300X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Mammography</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471Q0001X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Quality Management</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251E00000X</td>
+<td>Agencies</td>
+<td>Home Health</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QA0600X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Adult Day Care</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>335G00000X</td>
+<td>Suppliers</td>
+<td>Medical Foods Supplier</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3418M1130X</td>
+<td>Transportation Services</td>
+<td>Military/U.S. Coast Guard Transport</td>
+<td>Military or U.S. Coast Guard Ambulance, Water Transport</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>344800000X</td>
+<td>Transportation Services</td>
+<td>Air Carrier</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LP0222X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Pediatrics, Critical Care</td>
+<td>Pediatric Critical Care</td>
+</tr>
+<tr>
+<td>364SL0600X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Long-Term Care</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SN0000X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Neonatal</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>364SP0810X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Psych/Mental Health, Child &amp; Family</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>364ST0500X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Transplantation</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SX0106X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Occupational Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3104A0630X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Assisted Living Facility</td>
+<td>Assisted Living, Behavioral Disturbances</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>311Z00000X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Custodial Care Facility</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>314000000X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Skilled Nursing Facility</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>320900000X</td>
+<td>Residential Treatment Facilities</td>
+<td>Community Based Residential Treatment, Mental Retardation and/or Developmental Disabilities</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332100000X</td>
+<td>Suppliers</td>
+<td>Department of Veterans Affairs (VA) Pharmacy</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332BN1400X</td>
+<td>Suppliers</td>
+<td>Durable Medical Equipment &amp; Medical Supplies</td>
+<td>Nursing Facility Supplies</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332BX2000X</td>
+<td>Suppliers</td>
+<td>Durable Medical Equipment &amp; Medical Supplies</td>
+<td>Oxygen Equipment &amp; Supplies</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>333600000X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3336C0002X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>Clinic Pharmacy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>374J00000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Doula</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>163WN0800X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Neuroscience</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WP0218X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Pediatric Oncology</td>
+<td>Pediatric Hematology-Oncology</td>
+</tr>
+<tr>
+<td>261QS1200X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Sleep Disorder Diagnostic</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QX0100X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Occupational Medicine</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207YS0123X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Otolaryngology</td>
+<td>Facial Plastic Surgery</td>
+<td>Otolaryngology (ENT)</td>
+</tr>
+<tr>
+<td>2251H1200X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>Hand</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>207ZC0006X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Clinical Pathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>207ZI0100X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Immunopathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>2085B0100X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Body Imaging</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>172A00000X</td>
+<td>Other Service Providers</td>
+<td>Driver</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>172M00000X</td>
+<td>Other Service Providers</td>
+<td>Mechanotherapist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207RI0001X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Clinical &amp; Laboratory Immunology</td>
+<td>Allergy &amp; Immunology</td>
+</tr>
+<tr>
+<td>207RI0008X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Hepatology</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>207RI0011X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Interventional Cardiology</td>
+<td>Cardiology</td>
+</tr>
+<tr>
+<td>207RM1200X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Magnetic Resonance Imaging (MRI)</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>207RP1001X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Pulmonary Disease</td>
+<td>Pulmonology</td>
+</tr>
+<tr>
+<td>225CA2400X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Rehabilitation Counselor</td>
+<td>Assistive Technology Practitioner</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>225XE0001X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Environmental Modification</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>1835P1300X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacist</td>
+<td>Psychiatric</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>193200000X</td>
+<td>Group</td>
+<td>Multi-Specialty</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207RS0010X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Sports Medicine</td>
+<td>Sports Medicine</td>
+</tr>
+<tr>
+<td>2085P0229X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Pediatric Radiology</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>2085R0202X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Diagnostic Radiology</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>204R00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Electrodiagnostic Medicine</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>124Q00000X</td>
+<td>Dental Providers</td>
+<td>Dental Hygienist</td>
+<td>UNKNOWN</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>2086H0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Surgery</td>
+<td>Hospice and Palliative Medicine</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>2086S0122X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Surgery</td>
+<td>Plastic and Reconstructive Surgery</td>
+<td>Plastic Surgery</td>
+</tr>
+<tr>
+<td>146D00000X</td>
+<td>Emergency Medical Service Providers</td>
+<td>Personal Emergency Response Attendant</td>
+<td>UNKNOWN</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>2278P1005X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Pulmonary Rehabilitation</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>2278P3800X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Palliative/Hospice</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>156FC0800X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Technician/Technologist</td>
+<td>Contact Lens</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>156FX1202X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Technician/Technologist</td>
+<td>Optometric Technician</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2279P1005X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Pulmonary Rehabilitation</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>163WC0400X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Case Management</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WC1500X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Community Health</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WI0500X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Infusion Therapy</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WN0002X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Neonatal Intensive Care</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>163WP0807X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Psych/Mental Health, Child &amp; Adolescent</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>163WP0808X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Psych/Mental Health</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>163WP0809X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Psych/Mental Health, Adult</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>235500000X</td>
+<td>Speech, Language and Hearing Service Providers</td>
+<td>Specialist/Technologist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>224P00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Prosthetist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>224Z00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapy Assistant</td>
+<td>UNKNOWN</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>207VE0102X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>Reproductive Endocrinology</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>207QB0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Family Medicine</td>
+<td>Obesity Medicine</td>
+<td>Family Medicine</td>
+</tr>
+<tr>
+<td>213E00000X</td>
+<td>Podiatric Medicine &amp; Surgery Service Providers</td>
+<td>Podiatrist</td>
+<td>UNKNOWN</td>
+<td>Podiatry</td>
+</tr>
+<tr>
+<td>213EP1101X</td>
+<td>Podiatric Medicine &amp; Surgery Service Providers</td>
+<td>Podiatrist</td>
+<td>Primary Podiatric Medicine</td>
+<td>Podiatry</td>
+</tr>
+<tr>
+<td>224L00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Pedorthist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246YC3301X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Health Info</td>
+<td>Coding Specialist, Hospital Based</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207QS0010X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Family Medicine</td>
+<td>Sports Medicine</td>
+<td>Sports Medicine</td>
+</tr>
+<tr>
+<td>207ZP0101X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Anatomic Pathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>101YP1600X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Counselor</td>
+<td>Pastoral</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>102X00000X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Poetry Therapist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>172V00000X</td>
+<td>Other Service Providers</td>
+<td>Community Health Worker</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>173C00000X</td>
+<td>Other Service Providers</td>
+<td>Reflexologist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>163WI0600X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Infection Control</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>103TC0700X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Clinical</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TC2200X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Clinical Child &amp; Adolescent</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>175T00000X</td>
+<td>Other Service Providers</td>
+<td>Peer Specialist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207LH0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Anesthesiology</td>
+<td>Hospice and Palliative Medicine</td>
+<td>Anesthesiology</td>
+</tr>
+<tr>
+<td>2083C0008X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Preventive Medicine</td>
+<td>Clinical Informatics</td>
+<td>Preventive Medicine</td>
+</tr>
+<tr>
+<td>103TH0100X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Health Service</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TP0016X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Prescribing (Medical)</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TP2701X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Group Psychotherapy</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TS0200X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>School</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>104100000X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Social Worker</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207NI0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Dermatology</td>
+<td>Clinical &amp; Laboratory Dermatological Immunology</td>
+<td>Dermatology</td>
+</tr>
+<tr>
+<td>207NP0225X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Dermatology</td>
+<td>Pediatric Dermatology</td>
+<td>Dermatology</td>
+</tr>
+<tr>
+<td>2083P0901X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Preventive Medicine</td>
+<td>Public Health &amp; General Preventive Medicine</td>
+<td>Preventive Medicine</td>
+</tr>
+<tr>
+<td>2083T0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Preventive Medicine</td>
+<td>Medical Toxicology</td>
+<td>Preventive Medicine</td>
+</tr>
+<tr>
+<td>111NR0400X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Rehabilitation</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>207PS0010X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Emergency Medicine</td>
+<td>Sports Medicine</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>207PT0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Emergency Medicine</td>
+<td>Medical Toxicology</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>2084F0202X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Forensic Psychiatry</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>2084P0015X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Psychosomatic Medicine</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>1223D0001X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>Dental Public Health</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>224ZR0403X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapy Assistant</td>
+<td>Driving and Community Mobility</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>235Z00000X</td>
+<td>Speech, Language and Hearing Service Providers</td>
+<td>Speech-Language Pathologist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>243U00000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiology Practitioner Assistant</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246QH0401X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Hemapheresis Practitioner</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>276400000X</td>
+<td>Hospital Units</td>
+<td>Rehabilitation, Substance Use Disorder Unit</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>281PC2000X</td>
+<td>Hospitals</td>
+<td>Chronic Disease Hospital</td>
+<td>Children</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>282E00000X</td>
+<td>Hospitals</td>
+<td>Long Term Care Hospital</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QR0200X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Radiology</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>261QU0200X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Urgent Care</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>247ZC0005X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Pathology</td>
+<td>Clinical Laboratory Director, Non-physician</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251B00000X</td>
+<td>Agencies</td>
+<td>Case Management</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251G00000X</td>
+<td>Agencies</td>
+<td>Hospice Care, Community Based</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251S00000X</td>
+<td>Agencies</td>
+<td>Community/Behavioral Health</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251V00000X</td>
+<td>Agencies</td>
+<td>Voluntary or Charitable</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>335U00000X</td>
+<td>Suppliers</td>
+<td>Organ Procurement Organization</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LX0001X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>364SA2200X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Adult Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SC0200X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Critical Care Medicine</td>
+<td>Critical Care</td>
+</tr>
+<tr>
+<td>367500000X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Anesthetist, Certified Registered</td>
+<td>UNKNOWN</td>
+<td>Anesthesiology</td>
+</tr>
+<tr>
+<td>2865C1500X</td>
+<td>Hospitals</td>
+<td>Military Hospital</td>
+<td>Community Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2865X1600X</td>
+<td>Hospitals</td>
+<td>Military Hospital</td>
+<td>Military General Acute Care Hospital. Operational (Transportable)</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3104A0625X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Assisted Living Facility</td>
+<td>Assisted Living, Mental Illness</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>320600000X</td>
+<td>Residential Treatment Facilities</td>
+<td>Residential Treatment Facility, Mental Retardation and/or Developmental Disabilities</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332000000X</td>
+<td>Suppliers</td>
+<td>Military/U.S. Coast Guard Pharmacy</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332B00000X</td>
+<td>Suppliers</td>
+<td>Durable Medical Equipment &amp; Medical Supplies</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332BC3200X</td>
+<td>Suppliers</td>
+<td>Durable Medical Equipment &amp; Medical Supplies</td>
+<td>Customized Equipment</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>333300000X</td>
+<td>Suppliers</td>
+<td>Emergency Response System Companies</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3336H0001X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>Home Infusion Therapy Pharmacy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SM0705X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Medical-Surgical</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>225XL0004X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Low Vision</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>225XN1300X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Neurorehabilitation</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>246QM0900X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Microbiology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246X00000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Cardiovascular</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>374T00000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Religious Nonmedical Nursing Personnel</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>376J00000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Homemaker</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>385HR2060X</td>
+<td>Respite Care Facility</td>
+<td>Respite Care</td>
+<td>Respite Care, Mental Retardation and/or Developmental Disabilities, Child</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>385HR2065X</td>
+<td>Respite Care Facility</td>
+<td>Respite Care</td>
+<td>Respite Care, Physical Disabilities, Child</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>227800000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>UNKNOWN</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>2278C0205X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Critical Care</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>207YX0905X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Otolaryngology</td>
+<td>Otolaryngology/Facial Plastic Surgery</td>
+<td>Otolaryngology (ENT)</td>
+</tr>
+<tr>
+<td>2251N0400X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>Neurology</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>2251S0007X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>Sports</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>163WX0800X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Orthopedic</td>
+<td>Orthopaedics</td>
+</tr>
+<tr>
+<td>163WX1100X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Ophthalmic</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>164W00000X</td>
+<td>Nursing Service Providers</td>
+<td>Licensed Practical Nurse</td>
+<td>UNKNOWN</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>207ZD0900X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Dermatopathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>2084P0805X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Geriatric Psychiatry</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>2085D0003X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Diagnostic Neuroimaging</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>171W00000X</td>
+<td>Other Service Providers</td>
+<td>Contractor</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>111NI0013X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Independent Medical Examiner</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>207RG0300X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Geriatric Medicine</td>
+<td>Gerontology</td>
+</tr>
+<tr>
+<td>261QM0801X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Mental Health (Including Community Mental Health Center)</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>225800000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Recreation Therapist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>177F00000X</td>
+<td>Other Service Providers</td>
+<td>Lodging</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207RR0500X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Rheumatology</td>
+<td>Rheumatology</td>
+</tr>
+<tr>
+<td>1835P1200X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacist</td>
+<td>Pharmacotherapy</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>2085R0001X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Radiation Oncology</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>208100000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+<td>UNKNOWN</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+</tr>
+<tr>
+<td>2081N0008X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+<td>Neuromuscular Medicine</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+</tr>
+<tr>
+<td>2086S0102X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Surgery</td>
+<td>Surgical Critical Care</td>
+<td>Critical Care</td>
+</tr>
+<tr>
+<td>133N00000X</td>
+<td>Dietary &amp; Nutritional Service Providers</td>
+<td>Nutritionist</td>
+<td>UNKNOWN</td>
+<td>Dietary &amp; Nutritional</td>
+</tr>
+<tr>
+<td>133NN1002X</td>
+<td>Dietary &amp; Nutritional Service Providers</td>
+<td>Nutritionist</td>
+<td>Nutrition, Education</td>
+<td>Dietary &amp; Nutritional</td>
+</tr>
+<tr>
+<td>133V00000X</td>
+<td>Dietary &amp; Nutritional Service Providers</td>
+<td>Dietitian, Registered</td>
+<td>UNKNOWN</td>
+<td>Dietary &amp; Nutritional</td>
+</tr>
+<tr>
+<td>133VN1004X</td>
+<td>Dietary &amp; Nutritional Service Providers</td>
+<td>Dietitian, Registered</td>
+<td>Nutrition, Pediatric</td>
+<td>Dietary &amp; Nutritional</td>
+</tr>
+<tr>
+<td>207VX0201X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>Gynecologic Oncology</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>2088P0231X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Urology</td>
+<td>Pediatric Urology</td>
+<td>Pediatric Urology</td>
+</tr>
+<tr>
+<td>156FC0801X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Technician/Technologist</td>
+<td>Contact Lens Fitter</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>156FX1100X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Technician/Technologist</td>
+<td>Ophthalmic</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2279H0200X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Home Health</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>163W00000X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>UNKNOWN</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WC0200X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Critical Care Medicine</td>
+<td>Critical Care</td>
+</tr>
+<tr>
+<td>163WD1100X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Dialysis, Peritoneal</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WN0300X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Nephrology</td>
+<td>Nephrology</td>
+</tr>
+<tr>
+<td>163WP0000X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Pain Management</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+</tr>
+<tr>
+<td>208U00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Clinical Pharmacology</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2355S0801X</td>
+<td>Speech, Language and Hearing Service Providers</td>
+<td>Specialist/Technologist</td>
+<td>Speech-Language Assistant</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>224Y00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Clinical Exercise Physiologist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207UN0902X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Nuclear Medicine</td>
+<td>Nuclear Imaging &amp; Therapy</td>
+<td>Nuclear Medicine</td>
+</tr>
+<tr>
+<td>207V00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>UNKNOWN</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>213EG0000X</td>
+<td>Podiatric Medicine &amp; Surgery Service Providers</td>
+<td>Podiatrist</td>
+<td>General Practice</td>
+<td>Podiatry</td>
+</tr>
+<tr>
+<td>261QE0700X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>End-Stage Renal Disease (ESRD) Treatment</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207QG0300X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Family Medicine</td>
+<td>Geriatric Medicine</td>
+<td>Gerontology</td>
+</tr>
+<tr>
+<td>207RA0401X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Addiction Medicine</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>101Y00000X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Counselor</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>174M00000X</td>
+<td>Other Service Providers</td>
+<td>Veterinarian</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>163WE0900X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Enterostomal Therapy</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>174V00000X</td>
+<td>Other Service Providers</td>
+<td>Clinical Ethicist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207LC0200X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Anesthesiology</td>
+<td>Critical Care Medicine</td>
+<td>Anesthesiology</td>
+</tr>
+<tr>
+<td>103TM1700X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Men &amp; Masculinity</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TR0400X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Rehabilitation</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>1041C0700X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Social Worker</td>
+<td>Clinical</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207ND0900X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Dermatology</td>
+<td>Dermatopathology</td>
+<td>Dermatology</td>
+</tr>
+<tr>
+<td>2083P0500X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Preventive Medicine</td>
+<td>Preventive Medicine/Occupational Environmental Medicine</td>
+<td>Preventive Medicine</td>
+</tr>
+<tr>
+<td>2084B0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Obesity Medicine</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>111NR0200X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Radiology</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>2084P0005X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Neurodevelopmental Disabilities</td>
+<td>Neurology</td>
+</tr>
+<tr>
+<td>1223E0200X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>Endodontics</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>1223P0221X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>Pediatric Dentistry</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>246QB0000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Blood Banking</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM1102X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Military Outpatient Operational (Transportable) Component</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM1200X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Magnetic Resonance Imaging (MRI)</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QP1100X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Podiatric</td>
+<td>Podiatry</td>
+</tr>
+<tr>
+<td>261QP2300X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Primary Care</td>
+<td>Primary Care</td>
+</tr>
+<tr>
+<td>2472B0301X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Other</td>
+<td>Biomedical Engineering</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2472D0500X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Other</td>
+<td>Darkroom</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251K00000X</td>
+<td>Agencies</td>
+<td>Public Health or Welfare</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>252Y00000X</td>
+<td>Agencies</td>
+<td>Early Intervention Provider Agency</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>253Z00000X</td>
+<td>Agencies</td>
+<td>In Home Supportive Care</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3336M0002X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>Mail Order Pharmacy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3418M1110X</td>
+<td>Transportation Services</td>
+<td>Military/U.S. Coast Guard Transport</td>
+<td>Military or U.S. Coast Guard Ambulance, Ground Transport</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>343800000X</td>
+<td>Transportation Services</td>
+<td>Secured Medical Transport (VAN)</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>347D00000X</td>
+<td>Transportation Services</td>
+<td>Train</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363A00000X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Physician Assistant</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363AM0700X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Physician Assistant</td>
+<td>Medical</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>363LP0808X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Psych/Mental Health</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>364SA2100X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Acute Care</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SP0813X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Psych/Mental Health, Geropsychiatric</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>364SX0200X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Oncology</td>
+<td>Hematology &amp; Oncology</td>
+</tr>
+<tr>
+<td>372500000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Chore Provider</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>283X00000X</td>
+<td>Hospitals</td>
+<td>Rehabilitation Hospital</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>283XC2000X</td>
+<td>Hospitals</td>
+<td>Rehabilitation Hospital</td>
+<td>Children</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>302F00000X</td>
+<td>Managed Care Organizations</td>
+<td>Exclusive Provider Organization</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>311500000X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Alzheimer Center (Dementia Center)</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3140N1450X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Skilled Nursing Facility</td>
+<td>Nursing Care, Pediatric</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>315P00000X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Intermediate Care Facility, Mentally Retarded</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>322D00000X</td>
+<td>Residential Treatment Facilities</td>
+<td>Residential Treatment Facility, Emotionally Disturbed Children</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332H00000X</td>
+<td>Suppliers</td>
+<td>Eyewear Supplier (Equipment, not the service)</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332S00000X</td>
+<td>Suppliers</td>
+<td>Hearing  Aid Equipment</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332U00000X</td>
+<td>Suppliers</td>
+<td>Home Delivered Meals</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3336C0004X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>Compounding Pharmacy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3747P1801X</td>
+<td>Nursing Service Related Providers</td>
+<td>Technician</td>
+<td>Personal Care Attendant</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QR1300X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Rural Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZB0500X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Biochemist</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>225XH1200X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Hand</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>225XP0019X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Physical Rehabilitation</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>246QM0706X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Medical Technologist</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246W00000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Cardiology</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363L00000X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>225XR0403X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Driving and Community Mobility</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>207YS0012X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Otolaryngology</td>
+<td>Sleep Medicine</td>
+<td>Otolaryngology (ENT)</td>
+</tr>
+<tr>
+<td>225600000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Dance Therapist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>163WR0006X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Registered Nurse First Assistant</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WR1000X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Reproductive Endocrinology/Infertility</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>163WW0101X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Women&#39;s Health Care, Ambulatory</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>163WX0002X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Obstetric, High-Risk</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>163WX0106X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Occupational Health</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>164X00000X</td>
+<td>Nursing Service Providers</td>
+<td>Licensed Vocational Nurse</td>
+<td>UNKNOWN</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>171000000X</td>
+<td>Other Service Providers</td>
+<td>Military Health Care Provider</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2085H0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Hospice and Palliative Medicine</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>207RE0101X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Endocrinology, Diabetes &amp; Metabolism</td>
+<td>Endocrinology</td>
+</tr>
+<tr>
+<td>207RG0100X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Gastroenterology</td>
+<td>Gastroenterology</td>
+</tr>
+<tr>
+<td>207RH0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Hospice and Palliative Medicine</td>
+<td>Gerontology</td>
+</tr>
+<tr>
+<td>261QH0100X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Health Service</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM1000X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Migrant Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM1101X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Military and U.S. Coast Guard Ambulatory Procedure</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>1835N0905X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacist</td>
+<td>Nuclear</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>225B00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Pulmonary Function Technologist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>225CX0006X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Rehabilitation Counselor</td>
+<td>Orientation and Mobility Training Provider</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>204C00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Neuromusculoskeletal Medicine, Sports Medicine</td>
+<td>UNKNOWN</td>
+<td>Sports Medicine</td>
+</tr>
+<tr>
+<td>2080P0216X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Rheumatology</td>
+<td>Pediatric Rheumatology</td>
+</tr>
+<tr>
+<td>2080T0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Medical Toxicology</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>2080T0004X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Transplant Hepatology</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>2085N0700X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Neuroradiology</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>2085N0904X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Nuclear Radiology</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>207L00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Anesthesiology</td>
+<td>UNKNOWN</td>
+<td>Anesthesiology</td>
+</tr>
+<tr>
+<td>207LA0401X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Anesthesiology</td>
+<td>Addiction Medicine</td>
+<td>Anesthesiology</td>
+</tr>
+<tr>
+<td>2081H0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+<td>Hospice and Palliative Medicine</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+</tr>
+<tr>
+<td>2086S0120X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Surgery</td>
+<td>Pediatric Surgery</td>
+<td>Pediatric Surgery</td>
+</tr>
+<tr>
+<td>126800000X</td>
+<td>Dental Providers</td>
+<td>Dental Assistant</td>
+<td>UNKNOWN</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>133VN1005X</td>
+<td>Dietary &amp; Nutritional Service Providers</td>
+<td>Dietitian, Registered</td>
+<td>Nutrition, Renal</td>
+<td>Dietary &amp; Nutritional</td>
+</tr>
+<tr>
+<td>208200000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Plastic Surgery</td>
+<td>UNKNOWN</td>
+<td>Plastic Surgery</td>
+</tr>
+<tr>
+<td>2278P3900X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Neonatal/Pediatrics</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>152WV0400X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Optometrist</td>
+<td>Vision Therapy</td>
+<td>Optometry</td>
+</tr>
+<tr>
+<td>156FX1800X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Technician/Technologist</td>
+<td>Optician</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207XX0004X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Orthopaedic Surgery</td>
+<td>Foot and Ankle Surgery</td>
+<td>Orthopaedics</td>
+</tr>
+<tr>
+<td>207XX0801X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Orthopaedic Surgery</td>
+<td>Orthopaedic Trauma</td>
+<td>Orthopaedics</td>
+</tr>
+<tr>
+<td>229N00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Anaplastologist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>163WG0100X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Gastroenterology</td>
+<td>Gastroenterology</td>
+</tr>
+<tr>
+<td>163WN0003X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Neonatal, Low-Risk</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>208M00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Hospitalist</td>
+<td>UNKNOWN</td>
+<td>Hospitalist</td>
+</tr>
+<tr>
+<td>231HA2400X</td>
+<td>Speech, Language and Hearing Service Providers</td>
+<td>Audiologist</td>
+<td>Assistive Technology Practitioner</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246Y00000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Health Info</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207UN0903X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Nuclear Medicine</td>
+<td>In Vivo &amp; In Vitro Nuclear Medicine</td>
+<td>Nuclear Medicine</td>
+</tr>
+<tr>
+<td>207VC0200X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>Critical Care Medicine</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>213ES0103X</td>
+<td>Podiatric Medicine &amp; Surgery Service Providers</td>
+<td>Podiatrist</td>
+<td>Foot &amp; Ankle Surgery</td>
+<td>Podiatry</td>
+</tr>
+<tr>
+<td>224900000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Mastectomy Fitter</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246YR1600X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Health Info</td>
+<td>Registered Record Administrator</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZB0301X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Biomedical Engineering</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZC0007X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Surgical Assistant</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZN0300X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Nephrology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QE0002X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Emergency Care</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207QH0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Family Medicine</td>
+<td>Hospice and Palliative Medicine</td>
+<td>Family Medicine</td>
+</tr>
+<tr>
+<td>207RA0201X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Allergy &amp; Immunology</td>
+<td>Allergy &amp; Immunology</td>
+</tr>
+<tr>
+<td>2080A0000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Adolescent Medicine</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>1223X0008X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>Oral and Maxillofacial Radiology</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>122400000X</td>
+<td>Dental Providers</td>
+<td>Denturist</td>
+<td>UNKNOWN</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>101YM0800X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Counselor</td>
+<td>Mental Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>174400000X</td>
+<td>Other Service Providers</td>
+<td>Specialist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>1744R1102X</td>
+<td>Other Service Providers</td>
+<td>Specialist</td>
+<td>Research Study</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>174MM1900X</td>
+<td>Other Service Providers</td>
+<td>Veterinarian</td>
+<td>Medical Research</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2080H0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Hospice and Palliative Medicine</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>2080P0203X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Critical Care Medicine</td>
+<td>Pediatric Critical Care</td>
+</tr>
+<tr>
+<td>103GC0700X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Clinical Neuropsychologist</td>
+<td>Clinical</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>2080P0210X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Nephrology</td>
+<td>Pediatric Nephrology</td>
+</tr>
+<tr>
+<td>2084A0401X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Addiction Medicine</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>111NP0017X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Pediatric Chiropractor</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>111NS0005X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Sports Physician</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>207PH0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Emergency Medicine</td>
+<td>Hospice and Palliative Medicine</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>1223P0106X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>Oral and Maxillofacial Pathology</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>1223P0700X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>Prosthodontics</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>225000000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Orthotic Fitter</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QX0203X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Oncology, Radiation</td>
+<td>Hematology &amp; Oncology</td>
+</tr>
+<tr>
+<td>282NC2000X</td>
+<td>Hospitals</td>
+<td>General Acute Care Hospital</td>
+<td>Children</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>282NW0100X</td>
+<td>Hospitals</td>
+<td>General Acute Care Hospital</td>
+<td>Women</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QP3300X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Pain</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QR0400X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Rehabilitation</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QV0200X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>VA</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471C3402X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Radiography</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471V0105X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Vascular Sonography</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2472R0900X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Other</td>
+<td>Renal Dialysis</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251T00000X</td>
+<td>Agencies</td>
+<td>PACE Provider Organization</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QA0006X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Ambulatory Fertility Facility</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QA1903X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Ambulatory Surgical</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QB0400X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Birthing</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3416S0300X</td>
+<td>Transportation Services</td>
+<td>Ambulance</td>
+<td>Water Transport</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>341800000X</td>
+<td>Transportation Services</td>
+<td>Military/U.S. Coast Guard Transport</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LP2300X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Primary Care</td>
+<td>Primary Care</td>
+</tr>
+<tr>
+<td>363LX0106X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Occupational Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SF0001X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Family Health</td>
+<td>Family Medicine</td>
+</tr>
+<tr>
+<td>364SH1100X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Holistic</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SP1700X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Perinatal</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>364SP2800X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Perioperative</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>367A00000X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Advanced Practice Midwife</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>367H00000X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Anesthesiologist Assistant</td>
+<td>UNKNOWN</td>
+<td>Anesthesiology</td>
+</tr>
+<tr>
+<td>372600000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Adult Companion</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2865M2000X</td>
+<td>Hospitals</td>
+<td>Military Hospital</td>
+<td>Military General Acute Care Hospital</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>292200000X</td>
+<td>Laboratories</td>
+<td>Dental Laboratory</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>310400000X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Assisted Living Facility</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>310500000X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Intermediate Care Facility, Mental Illness</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>323P00000X</td>
+<td>Residential Treatment Facilities</td>
+<td>Psychiatric Residential Treatment Facility</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>324500000X</td>
+<td>Residential Treatment Facilities</td>
+<td>Substance Abuse Rehabilitation Facility</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332BD1200X</td>
+<td>Suppliers</td>
+<td>Durable Medical Equipment &amp; Medical Supplies</td>
+<td>Dialysis Equipment &amp; Supplies</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SP0811X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Psych/Mental Health, Chronically Ill</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>156FX1700X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Technician/Technologist</td>
+<td>Ocularist</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LA2200X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Adult Health</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>225XF0002X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Feeding, Eating &amp; Swallowing</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>246QH0600X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Histology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246XC2903X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Cardiovascular</td>
+<td>Vascular Specialist</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246XS1301X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Cardiovascular</td>
+<td>Sonography</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LG0600X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Gerontology</td>
+<td>Gerontology</td>
+</tr>
+<tr>
+<td>374K00000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Religious Nonmedical Practitioner</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2278E1000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Educational</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>207YX0901X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Otolaryngology</td>
+<td>Otology &amp; Neurotology</td>
+<td>Otolaryngology (ENT)</td>
+</tr>
+<tr>
+<td>225200000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapy Assistant</td>
+<td>UNKNOWN</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>163WX0003X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Obstetric, Inpatient</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>207ZF0201X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Forensic Pathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>207ZM0300X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Medical Microbiology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>207ZN0500X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Neuropathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>171WH0202X</td>
+<td>Other Service Providers</td>
+<td>Contractor</td>
+<td>Home Modifications</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>172P00000X</td>
+<td>Other Service Providers</td>
+<td>Naprapath</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207RB0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Obesity Medicine</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>261QE0800X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Endoscopy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>225A00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Music Therapist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>111NN0400X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Neurology</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>176P00000X</td>
+<td>Other Service Providers</td>
+<td>Funeral Director</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>225CA2500X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Rehabilitation Counselor</td>
+<td>Assistive Technology Supplier</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>1835N1003X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacist</td>
+<td>Nutrition Support</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>202C00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Independent Medical Examiner</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>204D00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Neuromusculoskeletal Medicine &amp; OMM</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>204F00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Transplant Surgery</td>
+<td>UNKNOWN</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>2080S0010X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Sports Medicine</td>
+<td>Sports Medicine</td>
+</tr>
+<tr>
+<td>2080S0012X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Sleep Medicine</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>2085R0204X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Vascular &amp; Interventional Radiology</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>207K00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Allergy &amp; Immunology</td>
+<td>UNKNOWN</td>
+<td>Allergy &amp; Immunology</td>
+</tr>
+<tr>
+<td>207KI0005X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Allergy &amp; Immunology</td>
+<td>Clinical &amp; Laboratory Immunology</td>
+<td>Allergy &amp; Immunology</td>
+</tr>
+<tr>
+<td>2081P0004X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+<td>Spinal Cord Injury Medicine</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+</tr>
+<tr>
+<td>2088F0040X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Urology</td>
+<td>Female Pelvic Medicine and Reconstructive Surgery</td>
+<td>Urology</td>
+</tr>
+<tr>
+<td>133VN1006X</td>
+<td>Dietary &amp; Nutritional Service Providers</td>
+<td>Dietitian, Registered</td>
+<td>Nutrition, Metabolic</td>
+<td>Dietary &amp; Nutritional</td>
+</tr>
+<tr>
+<td>146L00000X</td>
+<td>Emergency Medical Service Providers</td>
+<td>Emergency Medical Technician, Paramedic</td>
+<td>UNKNOWN</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>207VX0000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>Obstetrics</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>207W00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Ophthalmology</td>
+<td>UNKNOWN</td>
+<td>Ophthalmology</td>
+</tr>
+<tr>
+<td>2278S1500X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>SNF/Subacute Care</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>2279E0002X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Emergency Care</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>152WP0200X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Optometrist</td>
+<td>Pediatrics</td>
+<td>Optometry</td>
+</tr>
+<tr>
+<td>207XS0114X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Orthopaedic Surgery</td>
+<td>Adult Reconstructive Orthopaedic Surgery</td>
+<td>Orthopaedics</td>
+</tr>
+<tr>
+<td>207XS0117X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Orthopaedic Surgery</td>
+<td>Orthopaedic Surgery of the Spine</td>
+<td>Orthopaedics</td>
+</tr>
+<tr>
+<td>207XX0005X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Orthopaedic Surgery</td>
+<td>Sports Medicine</td>
+<td>Sports Medicine</td>
+</tr>
+<tr>
+<td>2279E1000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Educational</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>2279P4000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Patient Transport</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>2279S1500X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>SNF/Subacute Care</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>163WA0400X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Addiction (Substance Use Disorder)</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WA2000X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Administrator</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WC1600X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Continuing Education/Staff Development</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WH0500X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Hemodialysis</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WH1000X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Hospice</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WN1003X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Nutrition Support</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>231HA2500X</td>
+<td>Speech, Language and Hearing Service Providers</td>
+<td>Audiologist</td>
+<td>Assistive Technology Supplier</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2355A2700X</td>
+<td>Speech, Language and Hearing Service Providers</td>
+<td>Specialist/Technologist</td>
+<td>Audiology Assistant</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZB0302X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Biomedical Photographer</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZG0701X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Graphics Methods</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZI1000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Illustration, Medical</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZS0400X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Surgical Technologist</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QC1500X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Community Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QD0000X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Dental</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207R00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>UNKNOWN</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>207ZP0105X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Clinical Pathology/Laboratory Medicine</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>101YS0200X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Counselor</td>
+<td>School</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>1744G0900X</td>
+<td>Other Service Providers</td>
+<td>Specialist</td>
+<td>Graphics Designer</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>174H00000X</td>
+<td>Other Service Providers</td>
+<td>Health Educator</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2080I0007X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Clinical &amp; Laboratory Immunology</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>103TC1900X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Counseling</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TE1000X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Educational</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>175L00000X</td>
+<td>Other Service Providers</td>
+<td>Homeopath</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2080P0207X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Hematology-Oncology</td>
+<td>Pediatric Hematology-Oncology</td>
+</tr>
+<tr>
+<td>103TP0814X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Psychoanalysis</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>207ND0101X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Dermatology</td>
+<td>MOHS-Micrographic Surgery</td>
+<td>Dermatology</td>
+</tr>
+<tr>
+<td>2083X0100X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Preventive Medicine</td>
+<td>Occupational Medicine</td>
+<td>Preventive Medicine</td>
+</tr>
+<tr>
+<td>111NX0100X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Occupational Health</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>207PP0204X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Emergency Medicine</td>
+<td>Pediatric Emergency Medicine</td>
+<td>Pediatric Emergency Medicine</td>
+</tr>
+<tr>
+<td>2084D0003X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Diagnostic Neuroimaging</td>
+<td>Neurology</td>
+</tr>
+<tr>
+<td>2084H0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Hospice and Palliative Medicine</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>2084N0008X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Neuromuscular Medicine</td>
+<td>Neurology</td>
+</tr>
+<tr>
+<td>2084N0402X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Neurology with Special Qualifications in Child Neurology</td>
+<td>Neurology</td>
+</tr>
+<tr>
+<td>1223D0004X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>Dentist Anesthesiologist</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>207RT0003X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Transplant Hepatology</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>207RX0202X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Medical Oncology</td>
+<td>Hematology &amp; Oncology</td>
+</tr>
+<tr>
+<td>207SC0300X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Medical Genetics</td>
+<td>Clinical Cytogenetic</td>
+<td>Genetics</td>
+</tr>
+<tr>
+<td>207SM0001X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Medical Genetics</td>
+<td>Molecular Genetic Pathology</td>
+<td>Genetics</td>
+</tr>
+<tr>
+<td>207T00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Neurological Surgery</td>
+<td>UNKNOWN</td>
+<td>Neurological Surgery</td>
+</tr>
+<tr>
+<td>224ZF0002X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapy Assistant</td>
+<td>Feeding, Eating &amp; Swallowing</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>225100000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>UNKNOWN</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>246QC2700X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Cytotechnology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>275N00000X</td>
+<td>Hospital Units</td>
+<td>Medicare Defined Swing Bed Unit</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>281P00000X</td>
+<td>Hospitals</td>
+<td>Chronic Disease Hospital</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>282N00000X</td>
+<td>Hospitals</td>
+<td>General Acute Care Hospital</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>282NC0060X</td>
+<td>Hospitals</td>
+<td>General Acute Care Hospital</td>
+<td>Critical Access</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>282NR1301X</td>
+<td>Hospitals</td>
+<td>General Acute Care Hospital</td>
+<td>Rural</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QP2000X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Physical Therapy</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>261QR0207X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Radiology, Mobile Mammography</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>261QR0208X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Radiology, Mobile</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>261QR0404X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Rehabilitation, Cardiac Facilities</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QR0800X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Recovery Care</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QS0132X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Ophthalmologic Surgery</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>261QS1000X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Student Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2470A2800X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Health Information</td>
+<td>Assistant Record Technician</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2472V0600X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Other</td>
+<td>Veterinary</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251F00000X</td>
+<td>Agencies</td>
+<td>Home Infusion</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251J00000X</td>
+<td>Agencies</td>
+<td>Nursing Care</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251X00000X</td>
+<td>Agencies</td>
+<td>Supports Brokerage</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QA0900X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Amputee</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3336N0007X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>Nuclear Pharmacy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3336S0011X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>Specialty Pharmacy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>341600000X</td>
+<td>Transportation Services</td>
+<td>Ambulance</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3416A0800X</td>
+<td>Transportation Services</td>
+<td>Ambulance</td>
+<td>Air Transport</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>344600000X</td>
+<td>Transportation Services</td>
+<td>Taxi</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>347C00000X</td>
+<td>Transportation Services</td>
+<td>Private Vehicle</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363AS0400X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Physician Assistant</td>
+<td>Surgical Technologist</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>363LP1700X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Perinatal</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>364SC1501X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Community Health/Public Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SE1400X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Ethics</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SI0800X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Informatics</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SN0800X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Neuroscience</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>373H00000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Day Training/Habilitation Specialist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>284300000X</td>
+<td>Hospitals</td>
+<td>Special Hospital</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>286500000X</td>
+<td>Hospitals</td>
+<td>Military Hospital</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>293D00000X</td>
+<td>Laboratories</td>
+<td>Physiological Laboratory</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SG0600X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Gerontology</td>
+<td>Gerontology</td>
+</tr>
+<tr>
+<td>364SR0400X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Rehabilitation</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246RH0600X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Pathology</td>
+<td>Histology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LN0000X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Neonatal</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>225XP0200X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Pediatrics</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>2278E0002X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Emergency Care</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>2278G0305X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Geriatric Care</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>207ZB0001X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Blood Banking &amp; Transfusion Medicine</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>2251X0800X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>Orthopedic</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>246ZB0600X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Biostatistician</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZG1000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Geneticist, Medical (PhD)</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QR0206X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Radiology, Mammography</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>2255A2300X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Specialist/Technologist</td>
+<td>Athletic Trainer</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2255R0406X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Specialist/Technologist</td>
+<td>Rehabilitation, Blind</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>225700000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Massage Therapist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>163WR0400X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Rehabilitation</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WS0121X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Plastic Surgery</td>
+<td>Plastic Surgery</td>
+</tr>
+<tr>
+<td>163WS0200X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>School</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WX0601X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Otorhinolaryngology &amp; Head-Neck</td>
+<td>Otolaryngology (ENT)</td>
+</tr>
+<tr>
+<td>163WX1500X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Ostomy Care</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>207ZC0500X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Cytopathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>2084V0102X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Vascular Neurology</td>
+<td>Neurology</td>
+</tr>
+<tr>
+<td>171R00000X</td>
+<td>Other Service Providers</td>
+<td>Interpreter</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QL0400X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Lithotripsy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>1835G0303X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacist</td>
+<td>Geriatric</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>207RH0005X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Hypertension Specialist</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>207RI0200X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Infectious Disease</td>
+<td>Infectious Disease</td>
+</tr>
+<tr>
+<td>1835P0018X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacist</td>
+<td>Pharmacist Clinician (PhC)/ Clinical Pharmacy Specialist</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>202K00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Phlebology</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2085R0203X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Therapeutic Radiology</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>2085U0001X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Diagnostic Ultrasound</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>125K00000X</td>
+<td>Dental Providers</td>
+<td>Advanced Practice Dental Therapist</td>
+<td>UNKNOWN</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>2081P2900X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+<td>Pain Medicine</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+</tr>
+<tr>
+<td>2081S0010X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+<td>Sports Medicine</td>
+<td>Sports Medicine</td>
+</tr>
+<tr>
+<td>2086S0127X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Surgery</td>
+<td>Trauma Surgery</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>132700000X</td>
+<td>Dietary &amp; Nutritional Service Providers</td>
+<td>Dietary Manager</td>
+<td>UNKNOWN</td>
+<td>Dietary &amp; Nutritional</td>
+</tr>
+<tr>
+<td>2278P1004X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Pulmonary Diagnostics</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>156FX1201X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Technician/Technologist</td>
+<td>Optometric Assistant</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207X00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Orthopaedic Surgery</td>
+<td>UNKNOWN</td>
+<td>Orthopaedics</td>
+</tr>
+<tr>
+<td>207XP3100X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Orthopaedic Surgery</td>
+<td>Pediatric Orthopaedic Surgery</td>
+<td>Orthopaedics</td>
+</tr>
+<tr>
+<td>2279P3900X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Neonatal/Pediatrics</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>163WC3500X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Cardiac Rehabilitation</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WG0600X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Gerontology</td>
+<td>Gerontology</td>
+</tr>
+<tr>
+<td>208C00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Colon &amp; Rectal Surgery</td>
+<td>UNKNOWN</td>
+<td>Colon &amp; Rectal Surgery</td>
+</tr>
+<tr>
+<td>231H00000X</td>
+<td>Speech, Language and Hearing Service Providers</td>
+<td>Audiologist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>224ZE0001X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapy Assistant</td>
+<td>Environmental Modification</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>207VB0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>Obesity Medicine</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>222Q00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Developmental Therapist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QD1600X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Developmental Disabilities</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207ZP0104X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Chemical Pathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>207ZP0213X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Pediatric Pathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>208000000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>UNKNOWN</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>1223S0112X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>Oral and Maxillofacial Surgery</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>163WM1400X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Nurse Massage Therapist (NMT)</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>103TA0400X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Addiction (Substance Use Disorder)</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TA0700X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Adult Development &amp; Aging</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TB0200X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Cognitive &amp; Behavioral</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TE1100X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Exercise &amp; Sports</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>175M00000X</td>
+<td>Other Service Providers</td>
+<td>Midwife, Lay</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207LP3000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Anesthesiology</td>
+<td>Pediatric Anesthesiology</td>
+<td>Anesthesiology</td>
+</tr>
+<tr>
+<td>2080P0205X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Endocrinology</td>
+<td>Pediatric Endocrinology</td>
+</tr>
+<tr>
+<td>1041S0200X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Social Worker</td>
+<td>School</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>106H00000X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Marriage &amp; Family Therapist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207P00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Emergency Medicine</td>
+<td>UNKNOWN</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>2083S0010X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Preventive Medicine</td>
+<td>Sports Medicine</td>
+<td>Sports Medicine</td>
+</tr>
+<tr>
+<td>2084B0040X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Behavioral Neurology &amp; Neuropsychiatry</td>
+<td>Neurology</td>
+</tr>
+<tr>
+<td>207RS0012X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Sleep Medicine</td>
+<td>Internal Medicine</td>
+</tr>
+<tr>
+<td>2084N0400X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Neurology</td>
+<td>Neurology</td>
+</tr>
+<tr>
+<td>111NX0800X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Orthopedic</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>1223P0300X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>Periodontics</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>207SG0202X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Medical Genetics</td>
+<td>Clinical Biochemical Genetics</td>
+<td>Genetics</td>
+</tr>
+<tr>
+<td>224ZL0004X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapy Assistant</td>
+<td>Low Vision</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>2251C2600X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>Cardiopulmonary</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>2251E1300X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>Electrophysiology, Clinical</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>282J00000X</td>
+<td>Hospitals</td>
+<td>Religious Nonmedical Health Care Institution</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM1103X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Military Ambulatory Procedure Visits Operational (Transportable)</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM3000X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Medically Fragile Intants and Children Day Care</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QR0405X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Rehabilitation, Substance Use Disorder</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>247100000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471C1101X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Cardiovascular-Interventional Technology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471C3401X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Computed Tomography</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471R0002X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Radiation Therapy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471V0106X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Vascular-Interventional Technology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2472E0500X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Other</td>
+<td>EEG</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>251300000X</td>
+<td>Agencies</td>
+<td>Local Education Agency (LEA)</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QA0005X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Ambulatory Family Planning Facility</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3336L0003X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>Long Term Care Pharmacy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>335E00000X</td>
+<td>Suppliers</td>
+<td>Prosthetic/Orthotic Supplier</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3416L0300X</td>
+<td>Transportation Services</td>
+<td>Ambulance</td>
+<td>Land Transport</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>343900000X</td>
+<td>Transportation Services</td>
+<td>Non-emergency Medical Transport (VAN)</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>347E00000X</td>
+<td>Transportation Services</td>
+<td>Transportation Broker</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364S00000X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SC2300X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Chronic Care</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SE0003X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Emergency</td>
+<td>Emergency Medicine</td>
+</tr>
+<tr>
+<td>364SP0200X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Pediatrics</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>364SP0808X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Psych/Mental Health</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>364SP0809X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Psych/Mental Health, Adult</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>364SP0812X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Psych/Mental Health, Community</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>283Q00000X</td>
+<td>Hospitals</td>
+<td>Psychiatric Hospital</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>291900000X</td>
+<td>Laboratories</td>
+<td>Military Clinical Medical Laboratory</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>302R00000X</td>
+<td>Managed Care Organizations</td>
+<td>Health Maintenance Organization</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>305R00000X</td>
+<td>Managed Care Organizations</td>
+<td>Preferred Provider Organization</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>313M00000X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Nursing Facility/Intermediate Care Facility</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>315D00000X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Hospice, Inpatient</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3245S0500X</td>
+<td>Residential Treatment Facilities</td>
+<td>Substance Abuse Rehabilitation Facility</td>
+<td>Substance Abuse Treatment, Children</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332BP3500X</td>
+<td>Suppliers</td>
+<td>Durable Medical Equipment &amp; Medical Supplies</td>
+<td>Parenteral &amp; Enteral Nutrition</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>332G00000X</td>
+<td>Suppliers</td>
+<td>Eye Bank</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>374700000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Technician</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QR0401X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Rehabilitation, Comprehensive Outpatient Rehabilitation Facility (CORF)</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>225XG0600X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Gerontology</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>225XM0800X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Mental Health</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>246QL0900X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Laboratory Management</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246R00000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Pathology</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>385H00000X</td>
+<td>Respite Care Facility</td>
+<td>Respite Care</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>385HR2050X</td>
+<td>Respite Care Facility</td>
+<td>Respite Care</td>
+<td>Respite Care Camp</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>385HR2055X</td>
+<td>Respite Care Facility</td>
+<td>Respite Care</td>
+<td>Respite Care, Mental Illness, Child</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>226300000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Kinesiotherapist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207Y00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Otolaryngology</td>
+<td>UNKNOWN</td>
+<td>Otolaryngology (ENT)</td>
+</tr>
+<tr>
+<td>207YX0007X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Otolaryngology</td>
+<td>Plastic Surgery within the Head &amp; Neck</td>
+<td>Otolaryngology (ENT)</td>
+</tr>
+<tr>
+<td>2251G0304X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Physical Therapist</td>
+<td>Geriatrics</td>
+<td>Physical Therapy</td>
+</tr>
+<tr>
+<td>225500000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Specialist/Technologist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>163WW0000X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Wound Care</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>170100000X</td>
+<td>Other Service Providers</td>
+<td>Medical Genetics, Ph.D. Medical Genetics</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207ZC0008X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Clinical Informatics</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>2084P2900X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Pain Medicine</td>
+<td>Neurology</td>
+</tr>
+<tr>
+<td>2084S0010X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Psychiatry &amp; Neurology</td>
+<td>Sports Medicine</td>
+<td>Sports Medicine</td>
+</tr>
+<tr>
+<td>1710I1003X</td>
+<td>Other Service Providers</td>
+<td>Military Health Care Provider</td>
+<td>Independent Duty Medical Technicians</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>171WV0202X</td>
+<td>Other Service Providers</td>
+<td>Contractor</td>
+<td>Vehicle Modifications</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QF0050X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Family Planning, Non-Surgical</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QH0700X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Hearing and Speech</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM0855X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Adolescent and Children Mental Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QM1100X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Military/U.S. Coast Guard Outpatient</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>111NI0900X</td>
+<td>Chiropractic Providers</td>
+<td>Chiropractor</td>
+<td>Internist</td>
+<td>Chiropractic</td>
+</tr>
+<tr>
+<td>183500000X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacist</td>
+<td>UNKNOWN</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>225X00000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>UNKNOWN</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>2080P0214X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Pulmonology</td>
+<td>Pediatric Pulmonology</td>
+</tr>
+<tr>
+<td>2085R0205X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Radiology</td>
+<td>Radiological Physics</td>
+<td>Radiology</td>
+</tr>
+<tr>
+<td>208600000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Surgery</td>
+<td>UNKNOWN</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>125J00000X</td>
+<td>Dental Providers</td>
+<td>Dental Therapist</td>
+<td>UNKNOWN</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>2081P0010X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+<td>Pediatric Rehabilitation Medicine</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+</tr>
+<tr>
+<td>126900000X</td>
+<td>Dental Providers</td>
+<td>Dental Laboratory Technician</td>
+<td>UNKNOWN</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>2082S0099X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Plastic Surgery</td>
+<td>Plastic Surgery Within the Head and Neck</td>
+<td>Plastic Surgery</td>
+</tr>
+<tr>
+<td>207VF0040X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>Female Pelvic Medicine and Reconstructive Surgery</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>207VM0101X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Obstetrics &amp; Gynecology</td>
+<td>Maternal &amp; Fetal Medicine</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>2278P4000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>Patient Transport</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>152WC0802X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Optometrist</td>
+<td>Corneal and Contact Management</td>
+<td>Optometry</td>
+</tr>
+<tr>
+<td>152WL0500X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Optometrist</td>
+<td>Low Vision Rehabilitation</td>
+<td>Optometry</td>
+</tr>
+<tr>
+<td>156FX1101X</td>
+<td>Eye and Vision Services Providers</td>
+<td>Technician/Technologist</td>
+<td>Ophthalmic Assistant</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207XS0106X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Orthopaedic Surgery</td>
+<td>Hand Surgery</td>
+<td>Orthopaedics</td>
+</tr>
+<tr>
+<td>2279P1004X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Pulmonary Diagnostics</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>2279P1006X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Registered</td>
+<td>Pulmonary Function Technologist</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>163WC2100X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Continence Care</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>163WM0102X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Maternal Newborn</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>163WM0705X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Medical-Surgical</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>208D00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>General Practice</td>
+<td>UNKNOWN</td>
+<td>Family Medicine</td>
+</tr>
+<tr>
+<td>208VP0000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pain Medicine</td>
+<td>Pain Medicine</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+</tr>
+<tr>
+<td>208VP0014X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pain Medicine</td>
+<td>Interventional Pain Medicine</td>
+<td>Physical Medicine &amp; Rehabilitation</td>
+</tr>
+<tr>
+<td>211D00000X</td>
+<td>Podiatric Medicine &amp; Surgery Service Providers</td>
+<td>Assistant, Podiatric</td>
+<td>UNKNOWN</td>
+<td>Podiatry</td>
+</tr>
+<tr>
+<td>207U00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Nuclear Medicine</td>
+<td>UNKNOWN</td>
+<td>Nuclear Medicine</td>
+</tr>
+<tr>
+<td>207UN0901X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Nuclear Medicine</td>
+<td>Nuclear Cardiology</td>
+<td>Nuclear Medicine</td>
+</tr>
+<tr>
+<td>213ES0131X</td>
+<td>Podiatric Medicine &amp; Surgery Service Providers</td>
+<td>Podiatrist</td>
+<td>Foot Surgery</td>
+<td>Podiatry</td>
+</tr>
+<tr>
+<td>221700000X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Art Therapist</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246Z00000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZE0500X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>EEG</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QC0050X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Critical Access Hospital</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207QS1201X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Family Medicine</td>
+<td>Sleep Medicine</td>
+<td>Family Medicine</td>
+</tr>
+<tr>
+<td>207ZP0102X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pathology</td>
+<td>Anatomic Pathology &amp; Clinical Pathology</td>
+<td>Pathology</td>
+</tr>
+<tr>
+<td>1223X0400X</td>
+<td>Dental Providers</td>
+<td>Dentist</td>
+<td>Orthodontics and Dentofacial Orthopedics</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>101YA0400X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Counselor</td>
+<td>Addiction (Substance Use Disorder)</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>101YP2500X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Counselor</td>
+<td>Professional</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>173000000X</td>
+<td>Other Service Providers</td>
+<td>Legal Medicine</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>1744R1103X</td>
+<td>Other Service Providers</td>
+<td>Specialist</td>
+<td>Research Data Abstracter/Coder</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2080C0008X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Child Abuse Pediatrics</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>2080N0001X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Neonatal-Perinatal Medicine</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>2080P0202X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Cardiology</td>
+<td>Pediatric Cardiology</td>
+</tr>
+<tr>
+<td>103T00000X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>UNKNOWN</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TF0200X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Forensic</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>103TH0004X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Health</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>175F00000X</td>
+<td>Other Service Providers</td>
+<td>Naturopath</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>207LP2900X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Anesthesiology</td>
+<td>Pain Medicine</td>
+<td>Anesthesiology</td>
+</tr>
+<tr>
+<td>2080P0204X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Pediatric Emergency Medicine</td>
+<td>Pediatric Emergency Medicine</td>
+</tr>
+<tr>
+<td>2082S0105X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Plastic Surgery</td>
+<td>Surgery of the Hand</td>
+<td>Plastic Surgery</td>
+</tr>
+<tr>
+<td>2083A0100X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Preventive Medicine</td>
+<td>Aerospace Medicine</td>
+<td>Preventive Medicine</td>
+</tr>
+<tr>
+<td>103TP2700X</td>
+<td>Behavioral Health &amp; Social Service Providers</td>
+<td>Psychologist</td>
+<td>Psychotherapy</td>
+<td>Psychology</td>
+</tr>
+<tr>
+<td>207N00000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Dermatology</td>
+<td>UNKNOWN</td>
+<td>Dermatology</td>
+</tr>
+<tr>
+<td>207QA0000X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Family Medicine</td>
+<td>Adolescent Medicine</td>
+<td>Family Medicine</td>
+</tr>
+<tr>
+<td>163WP2201X</td>
+<td>Nursing Service Providers</td>
+<td>Registered Nurse</td>
+<td>Ambulatory Care</td>
+<td>Nursing</td>
+</tr>
+<tr>
+<td>237600000X</td>
+<td>Speech, Language and Hearing Service Providers</td>
+<td>Audiologist-Hearing Aid Fitter</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246Q00000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QX0200X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Oncology</td>
+<td>Hematology &amp; Oncology</td>
+</tr>
+<tr>
+<td>273Y00000X</td>
+<td>Hospital Units</td>
+<td>Rehabilitation Unit</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QP0905X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Public Health, State or Local</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261QP2400X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Prison Health</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246ZX2200X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Specialist/Technologist, Other</td>
+<td>Orthopedic Assistant</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471M1202X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Magnetic Resonance Imaging</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471N0900X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Nuclear Medicine Technology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>2471S1302X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Radiologic Technologist</td>
+<td>Sonography</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>247200000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Technician, Other</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>261Q00000X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3336M0003X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>Managed Care Organization Pharmacy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3418M1120X</td>
+<td>Transportation Services</td>
+<td>Military/U.S. Coast Guard Transport</td>
+<td>Military or U.S. Coast Guard Ambulance, Air Transport</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>347B00000X</td>
+<td>Transportation Services</td>
+<td>Bus</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3336I0012X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>Institutional Pharmacy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LP0200X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Pediatrics</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>363LW0102X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Women&#39;s Health</td>
+<td>Obstetrics &amp; Gynecology</td>
+</tr>
+<tr>
+<td>291U00000X</td>
+<td>Laboratories</td>
+<td>Clinical Medical Laboratory</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>305S00000X</td>
+<td>Managed Care Organizations</td>
+<td>Point of Service</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>317400000X</td>
+<td>Nursing &amp; Custodial Care Facilities</td>
+<td>Christian Science Facility</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>320700000X</td>
+<td>Residential Treatment Facilities</td>
+<td>Residential Treatment Facility, Physical Disabilities</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>331L00000X</td>
+<td>Suppliers</td>
+<td>Blood Bank</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>3336C0003X</td>
+<td>Suppliers</td>
+<td>Pharmacy</td>
+<td>Community/Retail Pharmacy</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>364SP0807X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Clinical Nurse Specialist</td>
+<td>Psych/Mental Health, Child &amp; Adolescent</td>
+<td>Psychiatry</td>
+</tr>
+<tr>
+<td>261QS0112X</td>
+<td>Ambulatory Health Care Facilities</td>
+<td>Clinic/Center</td>
+<td>Oral and Maxillofacial Surgery</td>
+<td>General Surgery</td>
+</tr>
+<tr>
+<td>225XH1300X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Occupational Therapist</td>
+<td>Human Factors</td>
+<td>Occupational Therapy</td>
+</tr>
+<tr>
+<td>246QI0000X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Pathology</td>
+<td>Immunology</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>246XC2901X</td>
+<td>Technologists, Technicians &amp; Other Technical Service Providers</td>
+<td>Spec/Tech, Cardiovascular</td>
+<td>Cardiovascular Invasive Specialist</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LA2100X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Acute Care</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>363LC0200X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Critical Care Medicine</td>
+<td>Critical Care</td>
+</tr>
+<tr>
+<td>363LF0000X</td>
+<td>Physician Assistants &amp; Advanced Practice Nursing Providers</td>
+<td>Nurse Practitioner</td>
+<td>Family</td>
+<td>Family Medicine</td>
+</tr>
+<tr>
+<td>374U00000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Home Health Aide</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>376K00000X</td>
+<td>Nursing Service Related Providers</td>
+<td>Nurse&#39;s Aide</td>
+<td>UNKNOWN</td>
+<td>[Not Mapped]</td>
+</tr>
+<tr>
+<td>390200000X</td>
+<td>Student, Health Care</td>
+<td>Student in an Organized Health Care Education/Training Program</td>
+<td>UNKNOWN</td>
+<td>Student</td>
+</tr>
+<tr>
+<td>2278G1100X</td>
+<td>Respiratory, Developmental, Rehabilitative and Restorative Service Providers</td>
+<td>Respiratory Therapist, Certified</td>
+<td>General Care</td>
+<td>Respiratory Therapy</td>
+</tr>
+<tr>
+<td>2080B0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Pediatrics</td>
+<td>Obesity Medicine</td>
+<td>Pediatrics</td>
+</tr>
+<tr>
+<td>2083B0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Preventive Medicine</td>
+<td>Obesity Medicine</td>
+<td>Preventive Medicine</td>
+</tr>
+<tr>
+<td>125Q00000X</td>
+<td>Dental Providers</td>
+<td>Oral Medicinist</td>
+<td>Dentistry</td>
+<td>Dentistry</td>
+</tr>
+<tr>
+<td>1835P2201X</td>
+<td>Pharmacy Service Providers</td>
+<td>Pharmacist</td>
+<td>Ambulatory Care</td>
+<td>Pharmacy</td>
+</tr>
+<tr>
+<td>207RA0001X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Advanced Heart Failure and Transplant Cardiology</td>
+<td>Cardiology</td>
+</tr>
+<tr>
+<td>207WX0009X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Ophthalmology</td>
+<td>Glaucoma Specialist</td>
+<td>Ophthalmology</td>
+</tr>
+<tr>
+<td>207WX0107X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Ophthalmology</td>
+<td>Retina Specialist</td>
+<td>Ophthalmology</td>
+</tr>
+<tr>
+<td>207WX0108X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Ophthalmology</td>
+<td>Uveitis and Ocular Inflammatory Disease</td>
+<td>Ophthalmology</td>
+</tr>
+<tr>
+<td>207WX0109X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Ophthalmology</td>
+<td>Neuro-ophthalmology</td>
+<td>Ophthalmology</td>
+</tr>
+<tr>
+<td>207WX0110X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Ophthalmology</td>
+<td>Pediatric Ophthalmology and Strabismus Specialist</td>
+<td>Ophthalmology</td>
+</tr>
+<tr>
+<td>207RA0002X</td>
+<td>Allopathic &amp; Osteopathic Physicians</td>
+<td>Internal Medicine</td>
+<td>Adult Congenital Heart Disease</td>
+<td>Cardiology</td>
+</tr>
+</tbody></table>
+
+</body>
+</html>
